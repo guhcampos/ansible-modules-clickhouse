@@ -1,0 +1,25 @@
+- name: test
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: delete a database
+      clickhouse_db:
+        name: testedb
+        state: absent
+    - name: create database
+      clickhouse_db:
+        name: testdb
+        state: present
+    - name: create a database (again)
+      clickhouse_db:
+        name: testdb
+        state: present
+    - name: delete a database
+      clickhouse_db:
+        name: testedb
+        state: absent
+    - name: delete a database (again)
+      clickhouse_db:
+        name: testedb
+        state: absent
